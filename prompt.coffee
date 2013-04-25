@@ -2,14 +2,24 @@ module.exports = (Impromptu, section) ->
   system = Impromptu.module.require 'impromptu-system'
 
   section 'user',
-    content: [system.user, system.host]
+    content: [system.user, system.shortHost]
     format: (user, host) ->
       return if user.trim() is process.env.DEFAULT_USER
       "#{user}@#{host}"
-    background: 'green'
-    foreground: 'white'
+    background: 'black'
 
   section 'pwd',
     content: system.prettyPwd
     background: 'blue'
-    foreground: 'white'
+    foreground: 'black'
+
+  section 'newline',
+    content: '\n'
+    options:
+      newlines: true
+
+  section 'ending',
+    content: '$'
+    foreground: 'blue'
+    options:
+      prePadding: false
