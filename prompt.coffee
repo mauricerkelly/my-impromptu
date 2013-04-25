@@ -13,13 +13,8 @@ module.exports = (Impromptu, section) ->
     background: 'blue'
     foreground: 'black'
 
-  section 'newline',
-    content: '\n'
-    options:
-      newlines: true
-
-  section 'ending',
-    content: '$'
+  section 'end',
+    content: '\n$'
     foreground: 'blue'
     options:
-      prePadding: false
+      newlines: true
