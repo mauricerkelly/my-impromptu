@@ -1,3 +1,4 @@
+
 module.exports = (Impromptu, section) ->
   system = Impromptu.module.require 'impromptu-system'
   git = Impromptu.module.require 'impromptu-git'
@@ -30,7 +31,7 @@ module.exports = (Impromptu, section) ->
     foreground: 'magenta'
     background: 'white'
     format: (statuses) ->
-      staged = _.reduce statuses, (memo, status) ->
+      staged = statuses.reduce (memo, status) ->
         memo += 1 if status.staged
         memo
       , 0
