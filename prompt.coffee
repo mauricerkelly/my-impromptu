@@ -52,17 +52,21 @@ module.exports = (Impromptu, section) ->
     foreground: 'green'
     background: 'black'
 
-  section 'git:aheadBehind',
-    content: [git.ahead, git.behind]
+  section 'git:ahead',
+    content: git.ahead
+    background: 'green'
+    foreground: 'white'
+    when: git.isRepo
+    format: (ahead) ->
+      "#{ahead} ahead" if ahead
+
+  section 'git:behind',
+    content: git.behind
     background: 'red'
     foreground: 'white'
     when: git.isRepo
-    format: (ahead, behind) ->
-      outputs = []
-      outputs.push "#{ahead} ahead" if ahead
-      outputs.push "#{behind} behind" if behind
-
-      outputs.join ' & '
+    format: (behind) ->
+      "#{behind} behind" if behind
 
   section 'end',
     content: '\n$'
