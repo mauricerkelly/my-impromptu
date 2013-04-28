@@ -1,7 +1,7 @@
 
 module.exports = (Impromptu, section) ->
-  system = Impromptu.module.require 'impromptu-system'
-  git = Impromptu.module.require 'impromptu-git'
+  system = @module.require 'impromptu-system'
+  git = @module.require 'impromptu-git'
 
   section 'user',
     content: [system.user, system.shortHost]
