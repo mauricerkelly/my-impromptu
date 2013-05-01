@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "impromptu-git": "~0.1.0",
-    "impromptu-system": "git://github.com/Impromptu/impromptu-system.git#master"
+    "impromptu-system": "~0.1.0"
   },
   "devDependencies": {
     "mocha": "~1.8.2",
