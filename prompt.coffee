@@ -21,10 +21,7 @@ module.exports = (Impromptu, section) ->
     background: 'black'
 
   section 'git:branch',
-    content: [git.branch, git._status]
-    format: (branch, statuses) ->
-      @background = 'yellow' if statuses.length
-      branch
+    content: git.branch
     background: 'green'
     foreground: 'black'
 
