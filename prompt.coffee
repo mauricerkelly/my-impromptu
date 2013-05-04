@@ -21,36 +21,26 @@ module.exports = (Impromptu, section) ->
     background: 'black'
 
   section 'git:branch',
-    content: git.branch
+    content: [git.branch, git._status]
+    format: (branch, statuses) ->
+      @background = 'yellow' if statuses.length
+      branch
     background: 'green'
     foreground: 'black'
 
-  section 'git:stage',
-    content: git._status
-    when: git.isRepo
-    foreground: 'magenta'
-    background: 'white'
-    format: (statuses) ->
-      staged = statuses.reduce (memo, status) ->
-        memo += 1 if status.staged
-        memo
-      , 0
-
-      return "#{staged} staged" if staged
-
-  section 'git:status',
-    content: [git.modified, git.deleted, git.added, git.untracked]
-    format: (mod, del, add, untracked) ->
-      output = []
-      output.push "#{mod} changed"   if mod
-      output.push "#{del} deleted"   if del
-      output.push "#{add} added"     if add
-      output.push "#{untracked} new" if untracked
-
-      output.join ' | '
+  section 'git:staged',
+    content: git.staged
+    format: (staged) ->
+      "staged #{staged}" if staged
     when: git.isRepo
     foreground: 'green'
-    background: 'black'
+
+  section 'git:unstaged',
+    content: git.unstaged
+    format: (unstaged) ->
+      "unstaged #{unstaged}" if unstaged
+    when: git.isRepo
+    foreground: 'blue'
 
   section 'git:ahead',
     content: git.ahead
