@@ -1,7 +1,7 @@
 {
   "name": "my-impromptu",
   "description": "Impromptu's starter prompt.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://impromptu.sh/",
   "author": "Impromptu Team (http://impromptu.sh/)",
   "contributors": [
@@ -26,8 +26,9 @@
     "test": "mocha test/*.coffee --compilers coffee:coffee-script"
   },
   "dependencies": {
-    "impromptu-git": "~0.1.2",
-    "impromptu-system": "~0.1.1"
+    "impromptu": "~0.2.0-beta.2",
+    "impromptu-git": "~0.1.4",
+    "impromptu-system": "~0.1.2"
   },
   "devDependencies": {
     "mocha": "~1.8.2",
