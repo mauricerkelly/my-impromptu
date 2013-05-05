@@ -1,7 +1,8 @@
-
 module.exports = (Impromptu, section) ->
   system = @module.require 'impromptu-system'
   git = @module.require 'impromptu-git'
+
+  git.fetch()
 
   section 'user',
     content: [system.user, system.shortHost]
@@ -25,6 +26,22 @@ module.exports = (Impromptu, section) ->
     background: 'green'
     foreground: 'black'
 
+  section 'git:ahead',
+    content: git.ahead
+    background: 'black'
+    foreground: 'green'
+    when: git.isRepo
+    format: (ahead) ->
+      "#{ahead}⁺" if ahead
+
+  section 'git:behind',
+    content: git.behind
+    background: 'black'
+    foreground: 'red'
+    when: git.isRepo
+    format: (behind) ->
+      "#{behind}⁻" if behind
+
   section 'git:staged',
     content: git.staged
     format: (staged) ->
@@ -38,22 +55,6 @@ module.exports = (Impromptu, section) ->
       "unstaged #{unstaged}" if unstaged
     when: git.isRepo
     foreground: 'blue'
-
-  section 'git:ahead',
-    content: git.ahead
-    background: 'green'
-    foreground: 'white'
-    when: git.isRepo
-    format: (ahead) ->
-      "#{ahead} ahead" if ahead
-
-  section 'git:behind',
-    content: git.behind
-    background: 'red'
-    foreground: 'white'
-    when: git.isRepo
-    format: (behind) ->
-      "#{behind} behind" if behind
 
   section 'end',
     content: '\n$'
