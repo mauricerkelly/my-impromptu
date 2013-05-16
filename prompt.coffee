@@ -10,16 +10,18 @@ module.exports = (Impromptu, section) ->
       return if user.trim() is process.env.DEFAULT_USER
       "#{user}@#{host}"
     background: 'black'
+    foreground: 'white'
 
   section 'pwd',
     content: system.prettyPwd
     background: 'blue'
-    foreground: 'black'
+    foreground: 'white'
 
   section 'git:in',
     when: git.branch
     content: 'in'
     background: 'black'
+    foreground: 'white'
 
   section 'git:branch',
     content: git.branch
