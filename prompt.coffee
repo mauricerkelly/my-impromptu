@@ -58,8 +58,19 @@ module.exports = (Impromptu, section) ->
     when: git.isRepo
     foreground: 'blue'
 
+  section 'exit code',
+    content: system.lastExitCode
+    format: (lastExitCode) ->
+      "exit code #{lastExitCode}"
+    when: system.lastExitCode
+    background: 'red'
+    foreground: 'white'
+
   section 'end',
-    content: '\n$'
+    content: ['\n$', system.lastExitCode]
+    format: (string, lastExitCode) ->
+      if lastExitCode then @foreground = 'red'
+      string
     foreground: 'blue'
     options:
       newlines: true
