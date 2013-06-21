@@ -8,14 +8,14 @@ module.exports = (Impromptu, section) ->
     content: [system.user, system.shortHost]
     format: (user, host) ->
       return if user.trim() is process.env.DEFAULT_USER
-      "#{user}@#{host}"
+      "#{user}"
     background: 'black'
     foreground: 'white'
 
   section 'pwd',
     content: system.prettyPwd
-    background: 'blue'
-    foreground: 'white'
+    background: 'black'
+    foreground: 'blue'
 
   section 'git:in',
     when: git.branch
@@ -25,8 +25,8 @@ module.exports = (Impromptu, section) ->
 
   section 'git:branch',
     content: git.branch
-    background: 'green'
-    foreground: 'black'
+    background: 'black'
+    foreground: 'green'
 
   section 'git:ahead',
     content: git.ahead
