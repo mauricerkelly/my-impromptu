@@ -63,8 +63,8 @@ module.exports = (Impromptu, section) ->
     format: (lastExitCode) ->
       "exit code #{lastExitCode}"
     when: system.lastExitCode
-    background: 'red'
-    foreground: 'white'
+    background: 'black'
+    foreground: 'red'
 
   section 'end',
     content: ['\n$', system.lastExitCode]
