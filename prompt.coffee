@@ -1,6 +1,7 @@
 module.exports = (Impromptu, section) ->
   system = @module.require 'impromptu-system'
   git = @module.require 'impromptu-git'
+  github = @module.require 'impromptu-github'
 
   git.fetch()
 
@@ -43,6 +44,23 @@ module.exports = (Impromptu, section) ->
     when: git.isRepo
     format: (behind) ->
       "#{behind}⁻" if behind
+
+  section 'github:ci',
+    content: github.ci
+    format: (status) ->
+      if status is 'success'
+        @foreground = 'green'
+        'CI ✓'
+      else if status is 'pending'
+        @foreground = 'yellow'
+        'CI …'
+      else if status is 'failure' or status is 'error'
+        @foreground = 'red'
+        'CI ✕'
+      else
+        ''
+    background: 'black'
+    foreground: 'white'
 
   section 'git:staged',
     content: git.staged
