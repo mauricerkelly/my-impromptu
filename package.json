@@ -26,8 +26,9 @@
     "test": "mocha test/*.coffee --compilers coffee:coffee-script"
   },
   "dependencies": {
-    "impromptu": "~0.2.0-beta.2",
-    "impromptu-git": "~0.1.4",
+    "impromptu": "~0.2.6",
+    "impromptu-git": "~0.1.7",
+    "impromptu-github": "~0.1.1",
     "impromptu-system": "~0.1.2"
   },
   "devDependencies": {
